@@ -1,7 +1,5 @@
 test_that("mergeInteractionSet works as expected", {
-    path <- system.file("extdata", "liver_18_10M_500000.tsv",
-        package = "HiCParser"
-    )
+    path <- system.file("extdata", "hicsample_21.tsv", package = "HiCParser")
     object1 <- parseTabular(path, sep = "\t")
     # Reducing object1
     object1 <- object1[1:100]
@@ -49,9 +47,8 @@ test_that("mergeInteractionSet works as expected", {
 })
 
 test_that(".checkConditionsReplicates works as expected", {
-    paths <-
-        system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
-    binSize <- 500000
+    paths <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
+    binSize <- 5000000
     expect_error(
         object <- parseHiC(rep(paths, 3),
             binSize = binSize,
@@ -104,8 +101,8 @@ test_that(".checkConditionsReplicates works as expected", {
 
 test_that(".checkPaths works as expected", {
     paths <-
-        system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
-    binSize <- 500000
+        system.file("extdata", "hicsample_21.hic", package = "HiCParser")
+    binSize <- 5000000
 
     expect_error(
         object <- parseHiC(

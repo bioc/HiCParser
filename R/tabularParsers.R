@@ -185,9 +185,7 @@
 #' An InteractionSet object.
 #'
 #' @examples
-#' path <- system.file("extdata", "liver_18_10M_500000.tsv",
-#'     package = "HiCParser"
-#' )
+#' path <- system.file("extdata", "hicsample_21.tsv", package = "HiCParser")
 #' object <- parseTabular(path, sep = "\t")
 #'
 #' @usage

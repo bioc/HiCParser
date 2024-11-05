@@ -1,11 +1,11 @@
 test_that("Parser for .hic data works as expected", {
     paths <-
-        system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
+        system.file("extdata", "hicsample_21.hic", package = "HiCParser")
 
     # Replicate and condition of each file. Can be names instead of numbers.
     replicates <- 1
     conditions <- 1
-    binSize <- 500000
+    binSize <- 5000000
 
     # Instantiation of data set
     expect_message(
@@ -15,7 +15,7 @@ test_that("Parser for .hic data works as expected", {
             replicates = replicates,
             conditions = conditions
         ),
-        "liver_18_10M.hic"
+        "hicsample_21.hic"
     )
     expect_equal(length(object), 210)
 

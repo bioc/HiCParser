@@ -1,13 +1,13 @@
 test_that("Parser for .cool data works as expected", {
     paths <-
-        system.file("extdata", "liver_18_10M_500000.cool",
+        system.file("extdata", "hicsample_21.cool",
             package = "HiCParser"
         )
 
     # Replicate and condition of each file. Can be names instead of numbers.
     replicates <- "GG"
     conditions <- "AA"
-    binSize <- 500000
+    binSize <- 5000000
 
     # Instantiation of data set
     expect_message(
@@ -16,7 +16,7 @@ test_that("Parser for .cool data works as expected", {
             replicates = replicates,
             conditions = conditions
         ),
-        "liver_18_10M_500000.cool"
+        "hicsample_21.cool"
     )
     expect_equal(length(object), 210)
 
@@ -33,7 +33,7 @@ test_that("Parser for .cool data works as expected", {
 
 test_that("Parser for .cool data returns expected errors", {
     paths <-
-        system.file("extdata", "liver_18_10M_500000.cool",
+        system.file("extdata", "hicsample_21.cool",
             package = "HiCParser"
         )
     expect_error(

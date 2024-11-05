@@ -128,7 +128,7 @@ paths <- c(
 # For the sake of the example, we will use the same file, several times
 paths <- rep(
     system.file("extdata",
-        "liver_18_10M_500000.cool",
+        "hicsample_21.cool",
         package = "HiCParser"
     ),
     6
@@ -166,7 +166,7 @@ paths <- c(
 # For the sake of the example, we will use the same file, several times
 paths <- rep(
     system.file("extdata",
-        "liver_18_10M.mcool",
+        "hicsample_21.mcool",
         package = "HiCParser"
     ),
     6
@@ -178,7 +178,7 @@ replicates <- c(1, 2, 3, 1, 2, 3)
 
 # mcool files can store several resolutions.
 # We will mention the one we need.
-binSize <- 1000000
+binSize <- 5000000
 
 # Instantiation of data set
 # The same function "parserCool" is used for cool and mcool files
@@ -207,7 +207,7 @@ paths <- c(
 # For the sake of the example, we will use the same file, several times
 paths <- rep(
     system.file("extdata",
-        "liver_18_10M.hic",
+        "hicsample_21.hic",
         package = "HiCParser"
     ),
     6
@@ -219,7 +219,7 @@ replicates <- c(1, 2, 3, 1, 2, 3)
 
 # hic files can store several resolutions.
 # We will mention the one we need.
-binSize <- 1000000
+binSize <- 5000000
 
 # Instantiation of data set
 hic.experiment <- parserHiC(
@@ -250,7 +250,7 @@ matrixPaths <- c(
 # For the sake of the example, we will use the same file, several times
 paths <- rep(
     system.file("extdata",
-        "liver_18_10M_500000.matrix",
+        "hicsample_21.matrix",
         package = "HiCParser"
     ),
     6
@@ -268,7 +268,7 @@ bedPaths <- c(
 
 # Alternatively, if the same bed file is used, we can provide it only once
 bedPaths <- system.file("extdata",
-    "liver_18_10M_500000.bed",
+    "hicsample_21.bed",
     package = "HiCParser"
 )
 
@@ -303,7 +303,7 @@ To load Hi-C data in this format:
 ```{r tabFormat}
 hic.experiment <- parseTabular(
     system.file("extdata",
-        "liver_18_10M_500000.tsv",
+        "hicsample_21.tsv",
         package = "HiCParser"
     ),
     sep = "\t"
@@ -323,10 +323,10 @@ in order to known more about this format.
 
 ```{r}
 library("HiCParser")
-hicFilePath <- system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
+hicFilePath <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
 hic.experiment <- parseHiC(
     paths = rep(hicFilePath, 6),
-    binSize = 100000,
+    binSize = 5000000,
     conditions = rep(seq(2), each = 3),
     replicates = rep(seq(3), 2)
 )
@@ -365,13 +365,10 @@ The object returned by the function is an `InteractionSet`.
 Here is a fictitious example:
 
 ```{r}
-path <- system.file("extdata", "liver_18_10M_500000.tsv", package = "HiCParser")
-object1 <- parseTabular(path, sep = "\t")
+path <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
+object1 <- parseHiC(path, conditions = 1, replicates = 1, sep = "\t")
 # Creating an object with a different condition
-object2 <- parseTabular(path, sep = "\t")
-tmp <- SummarizedExperiment::colData(object2)
-tmp[1, "condition"] <- 2
-SummarizedExperiment::colData(object2) <- tmp
+object1 <- parseHiC(path, conditions = 2, replicates = 1, sep = "\t")
 ```
 
 The merged object:

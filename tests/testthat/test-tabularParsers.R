@@ -1,14 +1,9 @@
 test_that("tabular parser for one file produce correct format", {
-    path <- system.file(
-        "extdata",
-        "liver_18_10M_500000.tsv",
-        package = "HiCParser"
-    )
-    expect_message(object <- parseTabular(path), "liver_18_10M_500000.tsv")
+    path <- system.file("extdata", "hicsample_21.tsv", package = "HiCParser")
+    expect_message(object <- parseTabular(path), "hicsample_21.tsv")
     # Class and slots
     expect_s4_class(object, "InteractionSet")
 
-    # TODO
     # Here test order of interactions and assays.
     expect_equal(length(object), 210)
 

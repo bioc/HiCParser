@@ -94,10 +94,10 @@ So far, `HiCParser` supports:
 We show here how to parse one hic format file.
 
 ```{r, eval = FALSE}
-hicFilePath <- system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
+hicFilePath <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
 data <- parseHiC(
     paths = hicFilePath,
-    binSize = 100000,
+    binSize = 5000000,
     conditions = 1,
     replicates = 1
 )
@@ -112,7 +112,7 @@ for each condition.
 ```{r, eval = FALSE}
 data <- parseHiC(
     paths = rep(hicFilePath, 6),
-    binSize = 100000,
+    binSize = 5000000,
     conditions = rep(seq(2), each = 3),
     replicates = rep(seq(3), 2)
 )
@@ -126,11 +126,10 @@ A different bed file could be use for each matrix file,
 but the same can also be used.
 
 ```{r, eval = FALSE}
-matrixFilePath <- system.file("extdata", "liver_18_10M_500000.matrix", package = "HiCParser")
-bedFilePath <- system.file("extdata",
-    "liver_18_10M_500000.bed",
-    package = "HiCParser"
-)
+matrixFilePath <- 
+    system.file("extdata", "hicsample_21.matrix", package = "HiCParser")
+bedFilePath <- 
+    system.file("extdata", "hicsample_21.bed", package = "HiCParser")
 data <- parseHiCPro(
     matrixPaths = rep(matrixFilePath, 6),
     bedPaths = bedFilePath,
@@ -155,7 +154,7 @@ if (!"rhdf5" %in% installed.packages()) {
     install.packages("rhdf5")
 }
 coolFilePath <- system.file("extdata",
-    "liver_18_10M_500000.cool",
+    "hicsample_21.cool",
     package = "HiCParser"
 )
 data <- parseCool(
@@ -171,12 +170,12 @@ The same function is used for the cool/mcool formats.
 
 ```{r, eval = FALSE}
 mcoolFilePath <- system.file("extdata",
-    "liver_18_10M.mcool",
+    "hicsample_21.mcool",
     package = "HiCParser"
 )
 data <- parseCool(
     paths = rep(mcoolFilePath, 6),
-    binSize = 10000000,
+    binSize = 5000000,
     conditions = rep(seq(2), each = 3),
     replicates = rep(seq(3), 2)
 )
@@ -200,7 +199,7 @@ To load Hi-C data in this format:
 ```{r tabFormat, eval = FALSE}
 hic.experiment <- parseTabular(
     system.file("extdata",
-        "liver_18_10M_500000.tsv",
+        "hicsample_21.tsv",
         package = "HiCParser"
     ),
     sep = "\t"
@@ -215,10 +214,10 @@ Please read the [corresponding vignette](https://bioconductor.org/packages/devel
 
 ```{r}
 library("HiCParser")
-hicFilePath <- system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
+hicFilePath <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
 hic.experiment <- parseHiC(
     paths = rep(hicFilePath, 6),
-    binSize = 100000,
+    binSize = 5000000,
     conditions = rep(seq(2), each = 3),
     replicates = rep(seq(3), 2)
 )

@@ -25,29 +25,29 @@ returns an InteractionSet object.
 \examples{
 # Path to each matrix file
 matrixPaths <- c(
-    'path/to/condition-1.replicate-1.matrix',
-    'path/to/condition-1.replicate-2.matrix',
-    'path/to/condition-1.replicate-3.matrix',
-    'path/to/condition-2.replicate-1.matrix',
-    'path/to/condition-2.replicate-2.matrix',
-    'path/to/condition-2.replicate-3.matrix'
+    "path/to/condition-1.replicate-1.matrix",
+    "path/to/condition-1.replicate-2.matrix",
+    "path/to/condition-1.replicate-3.matrix",
+    "path/to/condition-2.replicate-1.matrix",
+    "path/to/condition-2.replicate-2.matrix",
+    "path/to/condition-2.replicate-3.matrix"
 )
 
 # Path to each bed file
 bedPaths <- c(
-    'path/to/condition-1.replicate-1.bed',
-    'path/to/condition-1.replicate-2.bed',
-    'path/to/condition-1.replicate-3.bed',
-    'path/to/condition-2.replicate-1.bed',
-    'path/to/condition-2.replicate-2.bed',
-    'path/to/condition-2.replicate-3.bed'
+    "path/to/condition-1.replicate-1.bed",
+    "path/to/condition-1.replicate-2.bed",
+    "path/to/condition-1.replicate-3.bed",
+    "path/to/condition-2.replicate-1.bed",
+    "path/to/condition-2.replicate-2.bed",
+    "path/to/condition-2.replicate-3.bed"
 )
 
 # Condition and replicate of each file. Can be names instead of numbers.
 conditions <- c(1, 1, 1, 2, 2, 2)
 replicates <- c(1, 2, 3, 1, 2, 3)
 
-if(FALSE){
+if (FALSE) {
     # Instantiation of data set
     hic.experiment <- parseHiCPro(
         matrixPaths = matrixPaths,

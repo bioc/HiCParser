@@ -29,20 +29,20 @@ To read \code{.cool} of \code{.mcool} files, the \code{rhdf5} package is require
 Please install it before running the function.
 }
 \examples{
-#EXAMPLE FOR .cool FORMAT
+# EXAMPLE FOR .cool FORMAT
 # Path to each file
-pathsCool = c(
-    'path/to/condition-1.replicate-1.cool',
-    'path/to/condition-1.replicate-2.cool',
-    'path/to/condition-1.replicate-3.cool',
-    'path/to/condition-2.replicate-1.cool',
-    'path/to/condition-2.replicate-2.cool',
-    'path/to/condition-2.replicate-3.cool'
+pathsCool <- c(
+    "path/to/condition-1.replicate-1.cool",
+    "path/to/condition-1.replicate-2.cool",
+    "path/to/condition-1.replicate-3.cool",
+    "path/to/condition-2.replicate-1.cool",
+    "path/to/condition-2.replicate-2.cool",
+    "path/to/condition-2.replicate-3.cool"
 )
 # Condition and replicate of each file. Can be names instead of numbers.
 conditions <- c(1, 1, 1, 2, 2, 2)
 replicates <- c(1, 2, 3, 1, 2, 3)
-if(FALSE) {
+if (FALSE) {
     library(rhdf5)
     object <- parseCool(
         paths,
@@ -53,20 +53,20 @@ if(FALSE) {
 
 # EXAMPLE FOR .mcool FORMAT
 # Resolution
-binSize = 500000
+binSize <- 500000
 # Path to each file
-paths = c(
-    'path/to/condition-1.replicate-1.mcool',
-    'path/to/condition-1.replicate-2.mcool',
-    'path/to/condition-1.replicate-3.mcool',
-    'path/to/condition-2.replicate-1.mcool',
-    'path/to/condition-2.replicate-2.mcool',
-    'path/to/condition-2.replicate-3.mcool'
+paths <- c(
+    "path/to/condition-1.replicate-1.mcool",
+    "path/to/condition-1.replicate-2.mcool",
+    "path/to/condition-1.replicate-3.mcool",
+    "path/to/condition-2.replicate-1.mcool",
+    "path/to/condition-2.replicate-2.mcool",
+    "path/to/condition-2.replicate-3.mcool"
 )
 # Condition and replicate of each file. Can be names instead of numbers.
 conditions <- c(1, 1, 1, 2, 2, 2)
 replicates <- c(1, 2, 3, 1, 2, 3)
-if(FALSE) {
+if (FALSE) {
     # Instantiation of data set
     library(rhdf5)
     object <- parseCool(

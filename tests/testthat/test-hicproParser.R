@@ -1,11 +1,11 @@
 test_that("Parser for .hicpro data works as expected", {
     # Path to each matrix file
     matrixPaths <-
-        system.file("extdata", "liver_18_10M_500000.matrix", package = "HiCParser")
+        system.file("extdata", "hicsample_21.matrix", package = "HiCParser")
 
     # Path to each bed file
     bedPaths <-
-        system.file("extdata", "liver_18_10M_500000.bed", package = "HiCParser")
+        system.file("extdata", "hicsample_21.bed", package = "HiCParser")
 
     # Replicate and condition of each file. Can be names instead of numbers.
     replicates <- 1
@@ -19,7 +19,7 @@ test_that("Parser for .hicpro data works as expected", {
             replicates = replicates,
             conditions = conditions
         ),
-        "liver_18_10M_500000.matrix"
+        "hicsample_21.matrix"
     )
     expect_equal(length(object), 210)
 

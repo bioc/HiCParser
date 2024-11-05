@@ -20,14 +20,10 @@ The merged \code{\link{InteractionSet}}.
 Merge two different \code{\link{InteractionSet}}.
 }
 \examples{
-path <- system.file("extdata", "liver_18_10M_500000.tsv",
-  package = "HiCParser")
-object1 <- parseTabular(path, sep = "\t")
+path <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
+object1 <- parseHiC(path, conditions = 1, replicates = 1, sep = "\t")
 # Creating an object with a different condition
-object2 <- parseTabular(path, sep = "\t")
-tmp <- SummarizedExperiment::colData(object2)
-tmp[1, "condition"] <- 2
-SummarizedExperiment::colData(object2) <- tmp
+object1 <- parseHiC(path, conditions = 2, replicates = 1, sep = "\t")
 objectMerged <- mergeInteractionSet(object1, object2)
 
 }

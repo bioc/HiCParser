@@ -64,22 +64,22 @@ library("HiCParser")
 
 So far, `HiCParser` supports:
 
-- [cool and mcool](https://github.com/open2c/cooler) formats
+-   [cool and mcool](https://github.com/open2c/cooler) formats
 
-- [hic](https://github.com/aidenlab/hictools) format
+-   [hic](https://github.com/aidenlab/hictools) format
 
-- [HiC-Pro](https://github.com/nservant/HiC-Pro) format
+-   [HiC-Pro](https://github.com/nservant/HiC-Pro) format
 
-- A tabular format, where
+-   A tabular format, where
 
-  - the first column is named “chromosome”
-  - the second column is named “position 1” or “position.1”
-  - the third column is named “position 2” or “position.2”
-  - the fourth column is named “*x*.R*y*”, and *x* is the id of the
-    condition (“1”, or “2”, usually), *y* is the id of the replicate
-    (“1”, “2”, “3”, etc.); it should contain matrix counts
-  - the remaining columns are optional, and should be formatted like the
-    fourth column
+    -   the first column is named “chromosome”
+    -   the second column is named “position 1” or “position.1”
+    -   the third column is named “position 2” or “position.2”
+    -   the fourth column is named “*x*.R*y*”, and *x* is the id of the
+        condition (“1”, or “2”, usually), *y* is the id of the replicate
+        (“1”, “2”, “3”, etc.); it should contain matrix counts
+    -   the remaining columns are optional, and should be formatted like
+        the fourth column
 
 ## Example
 
@@ -88,10 +88,10 @@ So far, `HiCParser` supports:
 We show here how to parse one hic format file.
 
 ``` r
-hicFilePath <- system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
+hicFilePath <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
 data <- parseHiC(
     paths = hicFilePath,
-    binSize = 100000,
+    binSize = 5000000,
     conditions = 1,
     replicates = 1
 )
@@ -107,7 +107,7 @@ replicates for each condition.
 ``` r
 data <- parseHiC(
     paths = rep(hicFilePath, 6),
-    binSize = 100000,
+    binSize = 5000000,
     conditions = rep(seq(2), each = 3),
     replicates = rep(seq(3), 2)
 )
@@ -121,11 +121,10 @@ A HiC-Pro file contains a matrix file, and a bed file. A different bed
 file could be use for each matrix file, but the same can also be used.
 
 ``` r
-matrixFilePath <- system.file("extdata", "liver_18_10M_500000.matrix", package = "HiCParser")
-bedFilePath <- system.file("extdata",
-    "liver_18_10M_500000.bed",
-    package = "HiCParser"
-)
+matrixFilePath <- 
+    system.file("extdata", "hicsample_21.matrix", package = "HiCParser")
+bedFilePath <- 
+    system.file("extdata", "hicsample_21.bed", package = "HiCParser")
 data <- parseHiCPro(
     matrixPaths = rep(matrixFilePath, 6),
     bedPaths = bedFilePath,
@@ -151,7 +150,7 @@ if (!"rhdf5" %in% installed.packages()) {
     install.packages("rhdf5")
 }
 coolFilePath <- system.file("extdata",
-    "liver_18_10M_500000.cool",
+    "hicsample_21.cool",
     package = "HiCParser"
 )
 data <- parseCool(
@@ -166,12 +165,12 @@ mention it. The same function is used for the cool/mcool formats.
 
 ``` r
 mcoolFilePath <- system.file("extdata",
-    "liver_18_10M.mcool",
+    "hicsample_21.mcool",
     package = "HiCParser"
 )
 data <- parseCool(
     paths = rep(mcoolFilePath, 6),
-    binSize = 10000000,
+    binSize = 5000000,
     conditions = rep(seq(2), each = 3),
     replicates = rep(seq(3), 2)
 )
@@ -194,7 +193,7 @@ To load Hi-C data in this format:
 ``` r
 hic.experiment <- parseTabular(
     system.file("extdata",
-        "liver_18_10M_500000.tsv",
+        "hicsample_21.tsv",
         package = "HiCParser"
     ),
     sep = "\t"
@@ -212,28 +211,28 @@ in order to known more about this format.
 
 ``` r
 library("HiCParser")
-hicFilePath <- system.file("extdata", "liver_18_10M.hic", package = "HiCParser")
+hicFilePath <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
 hic.experiment <- parseHiC(
     paths = rep(hicFilePath, 6),
-    binSize = 100000,
+    binSize = 5000000,
     conditions = rep(seq(2), each = 3),
     replicates = rep(seq(3), 2)
 )
 #> 
-#> Parsing '/tmp/RtmpYKSmNY/temp_libpath1584b6bdf2480/HiCParser/extdata/liver_18_10M.hic'.
+#> Parsing '/tmp/RtmpHFfOT6/temp_libpathc52a1c587e54/HiCParser/extdata/hicsample_21.hic'.
 #> 
-#> Parsing '/tmp/RtmpYKSmNY/temp_libpath1584b6bdf2480/HiCParser/extdata/liver_18_10M.hic'.
+#> Parsing '/tmp/RtmpHFfOT6/temp_libpathc52a1c587e54/HiCParser/extdata/hicsample_21.hic'.
 #> 
-#> Parsing '/tmp/RtmpYKSmNY/temp_libpath1584b6bdf2480/HiCParser/extdata/liver_18_10M.hic'.
+#> Parsing '/tmp/RtmpHFfOT6/temp_libpathc52a1c587e54/HiCParser/extdata/hicsample_21.hic'.
 #> 
-#> Parsing '/tmp/RtmpYKSmNY/temp_libpath1584b6bdf2480/HiCParser/extdata/liver_18_10M.hic'.
+#> Parsing '/tmp/RtmpHFfOT6/temp_libpathc52a1c587e54/HiCParser/extdata/hicsample_21.hic'.
 #> 
-#> Parsing '/tmp/RtmpYKSmNY/temp_libpath1584b6bdf2480/HiCParser/extdata/liver_18_10M.hic'.
+#> Parsing '/tmp/RtmpHFfOT6/temp_libpathc52a1c587e54/HiCParser/extdata/hicsample_21.hic'.
 #> 
-#> Parsing '/tmp/RtmpYKSmNY/temp_libpath1584b6bdf2480/HiCParser/extdata/liver_18_10M.hic'.
+#> Parsing '/tmp/RtmpHFfOT6/temp_libpathc52a1c587e54/HiCParser/extdata/hicsample_21.hic'.
 hic.experiment
 #> class: InteractionSet 
-#> dim: 4942 6 
+#> dim: 44 6 
 #> metadata(0):
 #> assays(1): ''
 #> rownames: NULL
@@ -241,7 +240,7 @@ hic.experiment
 #> colnames: NULL
 #> colData names(2): condition replicate
 #> type: StrictGInteractions
-#> regions: 100
+#> regions: 9
 ```
 
 The conditions and replicates are reported in the `colData` slot :
@@ -265,12 +264,12 @@ interactions values):
 ``` r
 head(SummarizedExperiment::assay(hic.experiment))
 #>      [,1] [,2] [,3] [,4] [,5] [,6]
-#> [1,]   92   92   92   92   92   92
-#> [2,]   67   67   67   67   67   67
-#> [3,]   47   47   47   47   47   47
-#> [4,]   55   55   55   55   55   55
-#> [5,]   29   29   29   29   29   29
-#> [6,]   13   13   13   13   13   13
+#> [1,]   79   79   79   79   79   79
+#> [2,]   22   22   22   22   22   22
+#> [3,]    3    3    3    3    3    3
+#> [4,]    1    1    1    1    1    1
+#> [5,]    1    1    1    1    1    1
+#> [6,]    2    2    2    2    2    2
 ```
 
 The positions of interactions are in the `interactions` slot of the
@@ -278,22 +277,22 @@ object:
 
 ``` r
 InteractionSet::interactions(hic.experiment)
-#> StrictGInteractions object with 4942 interactions and 1 metadata column:
-#>          seqnames1          ranges1     seqnames2          ranges2 | chromosome
-#>              <Rle>        <IRanges>         <Rle>        <IRanges> |      <Rle>
-#>      [1]        18         1-100000 ---        18         1-100000 |         18
-#>      [2]        18         1-100000 ---        18    100001-200000 |         18
-#>      [3]        18         1-100000 ---        18    200001-300000 |         18
-#>      [4]        18         1-100000 ---        18    300001-400000 |         18
-#>      [5]        18         1-100000 ---        18    400001-500000 |         18
-#>      ...       ...              ... ...       ...              ... .        ...
-#>   [4938]        18  9700001-9800000 ---        18  9800001-9900000 |         18
-#>   [4939]        18  9700001-9800000 ---        18 9900001-10000000 |         18
-#>   [4940]        18  9800001-9900000 ---        18  9800001-9900000 |         18
-#>   [4941]        18  9800001-9900000 ---        18 9900001-10000000 |         18
-#>   [4942]        18 9900001-10000000 ---        18 9900001-10000000 |         18
+#> StrictGInteractions object with 44 interactions and 1 metadata column:
+#>        seqnames1           ranges1     seqnames2           ranges2 | chromosome
+#>            <Rle>         <IRanges>         <Rle>         <IRanges> |      <Rle>
+#>    [1]        21  5000001-10000000 ---        21  5000001-10000000 |         21
+#>    [2]        21  5000001-10000000 ---        21 10000001-15000000 |         21
+#>    [3]        21  5000001-10000000 ---        21 15000001-20000000 |         21
+#>    [4]        21  5000001-10000000 ---        21 20000001-25000000 |         21
+#>    [5]        21  5000001-10000000 ---        21 25000001-30000000 |         21
+#>    ...       ...               ... ...       ...               ... .        ...
+#>   [40]        21 35000001-40000000 ---        21 40000001-45000000 |         21
+#>   [41]        21 35000001-40000000 ---        21 45000001-50000000 |         21
+#>   [42]        21 40000001-45000000 ---        21 40000001-45000000 |         21
+#>   [43]        21 40000001-45000000 ---        21 45000001-50000000 |         21
+#>   [44]        21 45000001-50000000 ---        21 45000001-50000000 |         21
 #>   -------
-#>   regions: 100 ranges and 1 metadata column
+#>   regions: 9 ranges and 1 metadata column
 #>   seqinfo: 1 sequence from an unspecified genome; no seqlengths
 ```
 
@@ -334,25 +333,25 @@ contributing to this project, you agree to abide by its terms.
 
 ## Development tools
 
-- Continuous code testing is possible thanks to [GitHub
-  actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
-  through *[usethis](https://CRAN.R-project.org/package=usethis)*,
-  *[remotes](https://CRAN.R-project.org/package=remotes)*, and
-  *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized
-  to use [Bioconductor’s docker
-  containers](https://www.bioconductor.org/help/docker/) and
-  *[BiocCheck](https://bioconductor.org/packages/3.17/BiocCheck)*.
-- Code coverage assessment is possible thanks to
-  [codecov](https://codecov.io/gh) and
-  *[covr](https://CRAN.R-project.org/package=covr)*.
-- The [documentation website](http://emaigne.github.io/HiCParser) is
-  automatically updated thanks to
-  *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
-- The code is styled automatically thanks to
-  *[styler](https://CRAN.R-project.org/package=styler)*.
-- The documentation is formatted thanks to
-  *[devtools](https://CRAN.R-project.org/package=devtools)* and
-  *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
+-   Continuous code testing is possible thanks to [GitHub
+    actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
+    through *[usethis](https://CRAN.R-project.org/package=usethis)*,
+    *[remotes](https://CRAN.R-project.org/package=remotes)*, and
+    *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
+    customized to use [Bioconductor’s docker
+    containers](https://www.bioconductor.org/help/docker/) and
+    *[BiocCheck](https://bioconductor.org/packages/3.17/BiocCheck)*.
+-   Code coverage assessment is possible thanks to
+    [codecov](https://codecov.io/gh) and
+    *[covr](https://CRAN.R-project.org/package=covr)*.
+-   The [documentation website](http://emaigne.github.io/HiCParser) is
+    automatically updated thanks to
+    *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
+-   The code is styled automatically thanks to
+    *[styler](https://CRAN.R-project.org/package=styler)*.
+-   The documentation is formatted thanks to
+    *[devtools](https://CRAN.R-project.org/package=devtools)* and
+    *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
 
 For more details, check the `dev` directory.
 
