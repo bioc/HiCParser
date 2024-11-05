@@ -21,7 +21,7 @@ test_that("Parser for .hicpro data works as expected", {
         ),
         "hicsample_21.matrix"
     )
-    expect_equal(length(object), 210)
+    expect_equal(length(object), 44)
 
     # Interactions
     expect_true("matrix" %in% class(SummarizedExperiment::assay(object)))

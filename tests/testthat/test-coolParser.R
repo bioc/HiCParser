@@ -18,7 +18,7 @@ test_that("Parser for .cool data works as expected", {
         ),
         "hicsample_21.cool"
     )
-    expect_equal(length(object), 210)
+    expect_equal(length(object), 44)
 
     # Interactions
     expect_true("matrix" %in% class(SummarizedExperiment::assay(object)))

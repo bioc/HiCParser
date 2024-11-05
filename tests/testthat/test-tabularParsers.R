@@ -5,7 +5,7 @@ test_that("tabular parser for one file produce correct format", {
     expect_s4_class(object, "InteractionSet")
 
     # Here test order of interactions and assays.
-    expect_equal(length(object), 210)
+    expect_equal(length(object), 44)
 
     # Interactions
     expect_true("matrix" %in% class(SummarizedExperiment::assay(object)))

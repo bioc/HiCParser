@@ -1,20 +1,22 @@
 test_that("mergeInteractionSet works as expected", {
     path <- system.file("extdata", "hicsample_21.tsv", package = "HiCParser")
     object1 <- parseTabular(path, sep = "\t")
-    # Reducing object1
-    object1 <- object1[1:100]
 
     # Creating an 2nd fictive object, different from the first
     # Ginteractions
     set.seed(12345)
     allRegions <- regions(object1)
     gi2 <- InteractionSet::GInteractions(
-        anchor1 = sample(allRegions$index, 300, replace = TRUE),
-        anchor2 = sample(allRegions$index, 300, replace = TRUE),
+        anchor1 = sample(allRegions$index, 15, replace = TRUE),
+        anchor2 = sample(allRegions$index, 15, replace = TRUE),
         regions = allRegions,
         mode = "strict"
     )
     gi2 <- unique(gi2)
+
+    # Reducing object1
+    object1 <- object1[1:20]
+
     # Assays
     assays2 <- matrix(sample(seq_len(2000), length(gi2)), ncol = 1)
     # colData
@@ -35,9 +37,9 @@ test_that("mergeInteractionSet works as expected", {
             "replicate" = c("R1", "R2")
         )
     )
-    expect_true(length(objectMerged) == 189)
+    expect_true(length(objectMerged) == 28)
     nbNA <- apply(objectMerged@assays@data[[1]], 2, function(x) sum(is.na(x)))
-    expect_identical(nbNA, c(89L, 23L))
+    expect_identical(nbNA, c(8L, 14L))
     expect_true("StrictGInteractions" %in% class(objectMerged@interactions))
     expect_identical(
         which(objectMerged@interactions@anchor1 >
