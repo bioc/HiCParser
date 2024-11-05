@@ -139,7 +139,7 @@ conditions <- c(1, 1, 1, 2, 2, 2)
 replicates <- c(1, 2, 3, 1, 2, 3)
 
 # Instantiation of data set
-hic.experiment <- parserCool(
+hic.experiment <- parseCool(
     paths,
     conditions = conditions,
     replicates = replicates
@@ -181,8 +181,8 @@ replicates <- c(1, 2, 3, 1, 2, 3)
 binSize <- 5000000
 
 # Instantiation of data set
-# The same function "parserCool" is used for cool and mcool files
-hic.experiment <- parserCool(
+# The same function "parseCool" is used for cool and mcool files
+hic.experiment <- parseCool(
     paths,
     conditions = conditions,
     replicates = replicates,
@@ -222,7 +222,7 @@ replicates <- c(1, 2, 3, 1, 2, 3)
 binSize <- 5000000
 
 # Instantiation of data set
-hic.experiment <- parserHiC(
+hic.experiment <- parseHiC(
     paths,
     conditions = conditions,
     replicates = replicates,
@@ -244,11 +244,11 @@ matrixPaths <- c(
     "path/to/condition-1.replicate-3.matrix",
     "path/to/condition-2.replicate-1.matrix",
     "path/to/condition-2.replicate-2.matrix",
-    "path/to/condition-2.replicate-3.matrix",
+    "path/to/condition-2.replicate-3.matrix"
 )
 
 # For the sake of the example, we will use the same file, several times
-paths <- rep(
+matrixPaths <- rep(
     system.file("extdata",
         "hicsample_21.matrix",
         package = "HiCParser"
@@ -277,7 +277,7 @@ conditions <- c(1, 1, 1, 2, 2, 2)
 replicates <- c(1, 2, 3, 1, 2, 3)
 
 # Instantiation of data set
-hic.experiment <- parserHiCPro(
+hic.experiment <- parseHiCPro(
     matrixPaths = matrixPaths,
     bedPaths = bedPaths,
     conditions = conditions,
@@ -365,10 +365,10 @@ The object returned by the function is an `InteractionSet`.
 Here is a fictitious example:
 
 ```{r}
-path <- system.file("extdata", "hicsample_21.hic", package = "HiCParser")
-object1 <- parseHiC(path, conditions = 1, replicates = 1, sep = "\t")
+path <- system.file("extdata", "hicsample_21.cool", package = "HiCParser")
+object1 <- parseCool(path, conditions = 1, replicates = 1)
 # Creating an object with a different condition
-object1 <- parseHiC(path, conditions = 2, replicates = 1, sep = "\t")
+object2 <- parseCool(path, conditions = 2, replicates = 1)
 ```
 
 The merged object:

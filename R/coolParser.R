@@ -157,8 +157,7 @@ parseCool <- function(paths, binSize = NA, conditions, replicates) {
     repCond <- .checkConditionsReplicates(conditions, replicates)
     if (min(lengths(repCond)) != length(paths)) {
         stop(
-            "'conditions/replicates' and 'paths' ",
-            "must have the same length",
+            "'conditions/replicates' and 'paths' must have the same length",
             call. = FALSE
         )
     }
@@ -182,10 +181,7 @@ parseCool <- function(paths, binSize = NA, conditions, replicates) {
         replicate = repCond[["replicates"]]
     )
 
-    mergedinteractionSetCool <- Reduce(
-        f = mergeInteractionSet,
-        x = interactionSetCool
-    )
+    mergedinteractionSetCool <- Reduce(mergeInteractionSet, interactionSetCool)
     mergedinteractionSetCool <- .sortHiCData(mergedinteractionSetCool)
 
     return(mergedinteractionSetCool)

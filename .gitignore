@@ -11,4 +11,4 @@ inst/doc
 src/*.so
 src/*.o
 
-/inst/extdata/text.txt.gz
+inst/extdata/test.txt.gz

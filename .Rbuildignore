@@ -7,3 +7,5 @@
 ^Meta$
 ^README\.Rmd$
 ^data-raw$
+pkgdown/
+inst/extdata/test.txt.gz

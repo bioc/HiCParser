@@ -105,7 +105,7 @@
     )
     allRegions[, variable := NULL]
     allRegions <- unique(allRegions)
-    setorder(allRegions, chromosome, indexC)
+    data.table::setorder(allRegions, chromosome, indexC)
 
     # Constructing unique index for all chromosomes,
     # taking into account the difference in bins.
@@ -137,8 +137,6 @@
         sort = FALSE,
         by = c("chromosome", "bin.2")
     )
-    tabular[, bin.1 := NULL]
-    tabular[, bin.2 := NULL]
 
     allRegions[, indexC := NULL]
     order1 <- match(tabular$startIndex, allRegions$index)
