@@ -11,4 +11,3 @@ inst/doc
 src/*.so
 src/*.o
 
-inst/extdata/test.txt.gz
