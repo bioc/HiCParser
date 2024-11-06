@@ -38,9 +38,6 @@ Suggests:
     rhdf5,
     BiocStyle,
     knitr,
-    RefManageR,
-    rmarkdown,
     sessioninfo,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-VignetteBuilder: knitr
