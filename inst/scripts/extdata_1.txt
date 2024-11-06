@@ -4,13 +4,14 @@
 # Get example data from juicer
 wget https://github.com/aidenlab/juicer/wiki/data/test.txt.gz
 
-# Extract data from chromosome 21 into .hic format using juicer
+# Extract data from chromosome 21 into .hic format using juicer_tools (version 1.22.01)
 java -Xms512m -Xmx2048m -jar ~/Desktop/Apps/Juicebox/juicer_tools_1.22.01.jar pre -d -c 21 -r 5000000,10000000 -n test.txt.gz hicsample_21.hic hg19
 
-# Convert to cool, mcool and matrix. Extract corresponding bed file. Using hic2cool and cooler
+# Convert to cool, mcool and matrix. Extract corresponding bed file. Using hic2cool (version 0.8.3) and cooler (version 0.8.11)
 hic2cool convert -r 5000000 hicsample_21.hic hicsample_21.cool
 hic2cool convert hicsample_21.hic hicsample_21.mcool
 cooler dump -t bins hicsample_21.cool | awk '{print $0 "\t" NR}' | grep '^21' hicsample_21.bed > hicsample_21.bed
 cooler dump -t pixels hicsample_21.cool > hicsample_21.matrix
 
 # generate tsv corresponding file from R --> in extdata_2.R file
+
