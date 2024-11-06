@@ -20,6 +20,7 @@ date: "`r BiocStyle::doc_date()`"
 package: "`r BiocStyle::pkg_ver('HiCParser')`"
 vignette: >
   %\VignetteIndexEntry{Introduction to HiCParser}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}  
 ---
 
