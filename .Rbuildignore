@@ -9,3 +9,5 @@
 ^data-raw$
 pkgdown/
 inst/extdata/test.txt.gz
+
+pkgdown/

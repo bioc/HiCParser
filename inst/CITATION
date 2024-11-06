@@ -1,7 +1,7 @@
  bibentry(bibtype="manual",
     title = "{HiCParser} package to parse HiC data and import them in R",
     author = personList(
-        as.person("Elise Maigné"),
+        as.person("Elise Maigne"),
         as.person("Matthias Zytnicki")
     ),
     year = format(Sys.Date(), "%Y"),

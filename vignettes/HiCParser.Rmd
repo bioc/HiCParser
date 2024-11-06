@@ -37,11 +37,11 @@ knitr::opts_chunk$set(
 
 ## Required knowledge
 
-`r BiocStyle::Biocpkg("HiCParser")` is based on other packages and in particular 
-in those that have implemented the infrastructure needed for dealing with 
-HiC data with several replicates and conditions. Is provides several parsers, 
-for several HiC data standard format to import them into R in a 
-`r BiocStyle::Biocpkg("InteractionSet")` object.
+`r BiocStyle::Biocpkg("HiCParser")` is based on other packages and in 
+particular in those that have implemented the infrastructure needed for 
+dealing with HiC data with several replicates and conditions. Is provides 
+several parsers, for several HiC data standard format to import them 
+into R in a `r BiocStyle::Biocpkg("InteractionSet")` object.
 
 ## Citing `HiCParser`
 
@@ -356,5 +356,6 @@ session_info()
 
 # Bibliography
 
-Lun ATL, Perry M and Ing-Simmons E (2016). Infrastructure for genomic interactions: Bioconductor classes
-  for Hi-C, ChIA-PET and related experiments. F1000Res. 5, 950
+Lun ATL, Perry M and Ing-Simmons E (2016). 
+Infrastructure for genomic interactions: Bioconductor classes for Hi-C, 
+ChIA-PET and related experiments. F1000Res. 5, 950
