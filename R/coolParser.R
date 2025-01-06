@@ -48,7 +48,7 @@
     bins[, start := start + 1]
     bins[, end := as.integer(end)]
 
-    setorder(bins, chromosome, start, end)
+    data.table::setorder(bins, chromosome, start, end)
     bins[, index := seq_len(nrow(bins))]
 
     interactions <- data.table::data.table(
