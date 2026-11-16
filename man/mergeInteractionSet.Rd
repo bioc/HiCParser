@@ -20,10 +20,20 @@ The merged \code{\link{InteractionSet}}.
 Merge two different \code{\link{InteractionSet}}.
 }
 \examples{
-path <- system.file("extdata", "hicsample_21.cool", package = "HiCParser")
-object1 <- parseCool(path, conditions = 1, replicates = 1)
-# Creating an object with a different condition
-object2 <- parseCool(path, conditions = 2, replicates = 1)
+# Using the same file for example purpose
+matfile <- system.file("extdata", "hicsample_21.matrix",
+                       package = "HiCParser")
+bedFile <- system.file("extdata", "hicsample_21.bed",
+                           package = "HiCParser")
+object1 <- parseHiCPro(
+  matrixPaths = matfile,
+   bedPaths = bedFile,
+   conditions = 1,
+   replicates = 1)
+object2 <- parseHiCPro(
+  matrixPaths = matfile,
+   bedPaths = bedFile,
+   conditions = 2,
+   replicates = 1)
 objectMerged <- mergeInteractionSet(object1, object2)
-
 }

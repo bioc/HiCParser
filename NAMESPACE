@@ -7,30 +7,44 @@ export(parseHiCPro)
 export(parseTabular)
 import(data.table)
 importFrom(BiocGenerics,cbind)
-importFrom(GenomicRanges,GRanges)
-importFrom(GenomicRanges,match)
-importFrom(GenomicRanges,union)
-importFrom(InteractionSet,GInteractions)
-importFrom(InteractionSet,InteractionSet)
-importFrom(InteractionSet,anchors)
-importFrom(InteractionSet,interactions)
-importFrom(InteractionSet,intrachr)
-importFrom(InteractionSet,reduceRegions)
-importFrom(InteractionSet,regions)
-importFrom(Rcpp,evalCpp)
-importFrom(Rcpp,sourceCpp)
-importFrom(S4Vectors,DataFrame)
-importFrom(S4Vectors,Rle)
-importFrom(Seqinfo,seqlevels)
-importFrom(Seqinfo,seqnames)
-importFrom(SummarizedExperiment,assay)
-importFrom(SummarizedExperiment,colData)
-importFrom(data.table,fread)
-importFrom(data.table,merge.data.table)
-importFrom(data.table,setalloccol)
-importFrom(data.table,setnames)
-importFrom(data.table,setorder)
-importFrom(data.table,shift)
+importFrom(GenomicRanges,
+  GRanges,
+  match,
+  union
+)
+importFrom(InteractionSet,
+  GInteractions,
+  InteractionSet,
+  anchors,
+  interactions,
+  intrachr,
+  reduceRegions,
+  regions
+)
+importFrom(Rcpp,
+  evalCpp,
+  sourceCpp
+)
+importFrom(S4Vectors,
+  DataFrame,
+  Rle
+)
+importFrom(Seqinfo,
+  seqlevels,
+  seqnames
+)
+importFrom(SummarizedExperiment,
+  assay,
+  colData
+)
+importFrom(data.table,
+  fread,
+  merge.data.table,
+  setalloccol,
+  setnames,
+  setorder,
+  shift
+)
 importFrom(gtools,mixedsort)
 importFrom(pbapply,pbmapply)
 useDynLib(HiCParser)
